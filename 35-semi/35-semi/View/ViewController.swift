@@ -65,7 +65,7 @@ extension ViewController {
     }
     
     func nextButtonTapped() {
-        let nextViewController = DetailViewController(delegate: self)
+        let nextViewController = DetailViewController()
         if pushMode {
             nextViewController.dataBind(
                 title: "Push 모드",
@@ -114,14 +114,6 @@ private extension ViewController {
                 nextButton.widthAnchor.constraint(equalToConstant: 100)
             ]
         )
-    }
-    
-}
-
-extension ViewController: DetailViewControllerDelegate {
-    
-    func backButtonDidTapped(text: String) {
-        self.modeLabel.text = text
     }
     
 }

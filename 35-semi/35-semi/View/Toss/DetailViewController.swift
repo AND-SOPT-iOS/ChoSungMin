@@ -9,17 +9,6 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
-    weak var delegate: DetailViewControllerDelegate?
-    
-    init(delegate: DetailViewControllerDelegate) {
-        self.delegate = delegate
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -77,7 +66,6 @@ final class DetailViewController: UIViewController {
     }
     
     @objc func backButtonTapped() {
-        delegate?.backButtonDidTapped(text: self.textField.text ?? "내용 없음")
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
@@ -146,11 +134,5 @@ extension DetailViewController: UITextFieldDelegate {
         }
         return true
     }
-    
-}
-
-protocol DetailViewControllerDelegate: AnyObject {
-    
-    func backButtonDidTapped(text: String)
     
 }
