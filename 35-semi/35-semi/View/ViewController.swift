@@ -11,7 +11,7 @@ final class ViewController: UIViewController {
     
     private let modeLabel: UILabel = {
         let label = UILabel()
-        label.text = "푸시 모드"
+        label.text = "내용 없음"
         label.font = .systemFont(ofSize: 16)
         
         return label
@@ -65,11 +65,10 @@ extension ViewController {
     
     func modeButtonTapped() {
         pushMode.toggle()
-        modeLabel.text = pushMode ? "푸시 모드" : "모달 모드"
     }
     
     func nextButtonTapped() {
-        let nextViewController = DetailViewController()
+        let nextViewController = DetailViewController(delegate: self)
         if pushMode {
             nextViewController.dataBind(
                 title: "Push 모드",
@@ -118,6 +117,14 @@ private extension ViewController {
                 nextButton.widthAnchor.constraint(equalToConstant: 100)
             ]
         )
+    }
+    
+}
+
+extension ViewController: DetailViewControllerDelegate {
+    
+    func backButtonDidTapped(text: String) {
+        self.modeLabel.text = text
     }
     
 }

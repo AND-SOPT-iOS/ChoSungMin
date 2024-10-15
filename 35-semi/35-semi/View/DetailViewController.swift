@@ -9,6 +9,17 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
+    weak var delegate: DetailViewControllerDelegate?
+    
+    init(delegate: DetailViewControllerDelegate) {
+        self.delegate = delegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -23,6 +34,17 @@ final class DetailViewController: UIViewController {
         label.textAlignment = .left
         
         return label
+    }()
+    
+    private lazy var textField: UITextField = {
+        let textField = UITextField()
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 1
+        textField.leftView = UIView(frame: CGRect(origin: .zero, size: .init(width: 10, height: 44)))
+        textField.leftViewMode = .always
+        textField.delegate = self
+        
+        return textField
     }()
     
     private lazy var backButton: UIButton = {
@@ -55,6 +77,7 @@ final class DetailViewController: UIViewController {
     }
     
     @objc func backButtonTapped() {
+        delegate?.backButtonDidTapped(text: self.textField.text ?? "내용 없음")
         if self.navigationController == nil {
             self.dismiss(animated: true)
         } else {
@@ -71,7 +94,7 @@ private extension DetailViewController {
     }
     
     func setUI() {
-        [titleLabel, contentLabel, backButton].forEach {
+        [titleLabel, contentLabel, backButton, textField].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview($0)
         }
@@ -90,8 +113,15 @@ private extension DetailViewController {
                     constant: 20
                 ),
                 contentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                backButton.topAnchor.constraint(
+                textField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                textField.topAnchor.constraint(
                     equalTo: contentLabel.bottomAnchor,
+                    constant: 20
+                ),
+                textField.widthAnchor.constraint(equalToConstant: 300),
+                textField.heightAnchor.constraint(equalToConstant: 44),
+                backButton.topAnchor.constraint(
+                    equalTo: textField.bottomAnchor,
                     constant: 20
                 ),
                 backButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -105,5 +135,22 @@ private extension DetailViewController {
         self.titleLabel.text = receivedTitle
         self.contentLabel.text = receivedContent
     }
+    
+}
+
+extension DetailViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField.text ?? "").count + string.count > 10 {
+            return false
+        }
+        return true
+    }
+    
+}
+
+protocol DetailViewControllerDelegate: AnyObject {
+    
+    func backButtonDidTapped(text: String)
     
 }
