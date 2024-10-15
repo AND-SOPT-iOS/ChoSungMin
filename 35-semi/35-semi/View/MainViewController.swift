@@ -15,7 +15,7 @@ final class MainViewController: BaseViewController {
         button.backgroundColor = .tintColor
         button.layer.cornerRadius = 10
         button.setTitleColor(
-            .white,
+            .label,
             for: .normal
         )
         button.addTarget(
@@ -35,7 +35,7 @@ final class MainViewController: BaseViewController {
     }
     
     override func setStyle() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
     }
     
     override func setUI() {
