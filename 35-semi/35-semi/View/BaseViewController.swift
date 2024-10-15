@@ -7,7 +7,16 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+protocol Presentable {
+    
+    func setStyle()
+    
+    func setUI()
+    
+    func setLayout()
+}
+
+class BaseViewController: UIViewController, Presentable {
     
     func setStyle() {}
     
