@@ -28,7 +28,7 @@ final class DetailViewController: BaseViewController {
         return appCard
     }()
     
-    // TODO: 만약 서버가 있으면 id만 받아와서 API 호출하면 됨
+    // 만약 서버가 있으면 id만 받아와서 API 호출하면 됨
     private let appTitle: String
     private let appSubtitle: String
     private let appImage: UIImage
@@ -74,14 +74,22 @@ final class DetailViewController: BaseViewController {
     
     override func setLayout() {
         scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
         scrollViewContentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.snp.edges)
+            $0.edges.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
         }
+        
         appCard.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(scrollViewContentView)
+            $0.top.equalTo(scrollViewContentView)
+            $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(200)
+        }
+        
+        scrollViewContentView.snp.makeConstraints {
+            $0.bottom.equalTo(appCard.snp.bottom)
         }
     }
     

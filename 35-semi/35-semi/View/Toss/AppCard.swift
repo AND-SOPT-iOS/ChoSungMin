@@ -14,6 +14,7 @@ final class AppCard: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
         
         return imageView
     }()
@@ -48,9 +49,9 @@ final class AppCard: UIView {
     }()
     
     private let shareButton: UIButton = {
-        var configuration = UIButton.Configuration.plain()
-        configuration.image = UIImage(systemName: "square.and.arrow.up")
-        var button = UIButton(configuration: configuration)
+        var button = UIButton()
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.tintColor = .tintColor
         
         return button
     }()
@@ -85,6 +86,7 @@ extension AppCard: Presentable {
     func setLayout() {
         imageView.snp.makeConstraints {
             $0.top.leading.bottom.equalToSuperview().inset(20)
+            $0.width.equalTo(imageView.snp.height)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
@@ -99,8 +101,9 @@ extension AppCard: Presentable {
             $0.leading.equalTo(titleLabel.snp.leading)
         }
         shareButton.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(openButton.snp.height)
+            $0.centerY.equalTo(openButton.snp.centerY)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.width.height.equalTo(openButton.snp.height)
         }
     }
     
