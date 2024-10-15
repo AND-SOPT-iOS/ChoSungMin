@@ -58,7 +58,11 @@ final class MainViewController: BaseViewController {
     
     @objc
     func nextButtonTapped() {
-        let nextViewController = DetailViewController()
+        let nextViewController = DetailViewController(
+            appTitle: "토스",
+            appSubtitle: "금융이 쉬워진다",
+            appImage: .toss
+        )
         self.navigationController?.pushViewController(
             nextViewController,
             animated: true
