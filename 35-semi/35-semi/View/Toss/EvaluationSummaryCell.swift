@@ -7,16 +7,19 @@
 
 import UIKit
 
-class EvaluationSummaryCell: UIView {
+final class EvaluationSummaryCell: UIView {
     
     private let countLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .secondaryLabel
         
         return label
     }()
     
     private let scorelabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.textColor = .secondaryLabel
         
         return label
     }()
@@ -40,7 +43,7 @@ class EvaluationSummaryCell: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateView(evaluationCount: Int, score: Double) {
+    private func updateView(evaluationCount: Int, score: Double) {
         var text = ""
         if evaluationCount >= 10000 {
             let result = Double(evaluationCount) / 10000
@@ -73,6 +76,7 @@ class EvaluationSummaryCell: UIView {
         
         for i in 0..<5 {
             let starImageView = UIImageView()
+            starImageView.tintColor = .secondaryLabel
             starImageView.contentMode = .scaleAspectFit
             if i < fullStars {
                 starImageView.image = UIImage(systemName: "star.fill")
@@ -91,15 +95,12 @@ class EvaluationSummaryCell: UIView {
 
 extension EvaluationSummaryCell: Presentable {
     
-    func setStyle() {
-        
-    }
+    func setStyle() { }
     
     func setUI() {
-        [countLabel, scorelabel, starStackView]
-            .forEach {
-                addSubview($0)
-            }
+        [countLabel, scorelabel, starStackView].forEach {
+            addSubview($0)
+        }
     }
     
     func setLayout() {
