@@ -28,11 +28,34 @@ final class DetailViewController: BaseViewController {
         return appCard
     }()
     
-    // 만약 서버가 있으면 id만 받아와서 API 호출하면 됨
+    private let summaryStackView: UIStackView = {
+        let summaryStackView = UIStackView()
+        
+        return summaryStackView
+    }()
+    
+    private let evaluationSummaryCell: EvaluationSummaryCell = {
+        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: 36543, score: 4.4)
+        
+        return evaluationSummaryCell
+    }()
+    
+    private let awardSummaryCell: AwardSummaryCell = {
+        let awardSummaryCell = AwardSummaryCell(award: .editorChoice)
+        
+        return awardSummaryCell
+    }()
+    
+    private let ageLimitSummaryCell: AgeLimitSummaryCell = {
+        let agelimitSummaryCell = AgeLimitSummaryCell(ageLimit: 4)
+        
+        return agelimitSummaryCell
+    }()
+    
+    // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
     private let appTitle: String
     private let appSubtitle: String
     private let appImage: UIImage
-    
     
     init(appTitle: String, appSubtitle: String, appImage: UIImage) {
         self.appTitle = appTitle
@@ -67,8 +90,11 @@ final class DetailViewController: BaseViewController {
     override func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
-        [appCard].forEach {
+        [appCard, summaryStackView].forEach {
             scrollViewContentView.addSubview($0)
+        }
+        [evaluationSummaryCell, awardSummaryCell, ageLimitSummaryCell].forEach {
+            summaryStackView.addArrangedSubview($0)
         }
     }
     
@@ -88,9 +114,28 @@ final class DetailViewController: BaseViewController {
             $0.height.equalTo(200)
         }
         
-        scrollViewContentView.snp.makeConstraints {
-            $0.bottom.equalTo(appCard.snp.bottom)
+        summaryStackView.snp.makeConstraints {
+            $0.top.equalTo(appCard.snp.bottom)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(96)
         }
+        
+        scrollViewContentView.snp.makeConstraints {
+            $0.bottom.equalTo(summaryStackView.snp.bottom)
+        }
+        
+        evaluationSummaryCell.snp.makeConstraints {
+            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+        }
+        
+        awardSummaryCell.snp.makeConstraints {
+            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+        }
+        
+        ageLimitSummaryCell.snp.makeConstraints {
+            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+        }
+        
     }
     
 }
