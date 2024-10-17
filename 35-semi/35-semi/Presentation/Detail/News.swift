@@ -90,7 +90,7 @@ final class News: UIView {
         case 604800..<2592000:
             return "\(Int(diff / 604800))주 전"
         case 2592000..<31536000:
-            return "\(Int(diff / 2592000))달 전"
+            return "\(Int(diff / 2592000))개월 전"
         default:
             return "\(Int(diff / 31536000))년 전"
         }

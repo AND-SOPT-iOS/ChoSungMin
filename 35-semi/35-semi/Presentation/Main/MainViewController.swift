@@ -61,7 +61,7 @@ final class MainViewController: BaseViewController {
         let nextViewController = DetailViewController(
             detail: AppDetail(
                 title: "토스",
-                subtitle: "금융이 쉬원진다",
+                subtitle: "금융이 쉬워진다",
                 imageName: "toss",
                 version: "5.183.0",
                 news: "- 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요.",

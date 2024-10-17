@@ -20,7 +20,7 @@ final class AppCard: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
         label.numberOfLines = 0
         
         return label
@@ -28,7 +28,7 @@ final class AppCard: UIView {
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
         
@@ -36,21 +36,25 @@ final class AppCard: UIView {
     }()
     
     private let openButton: UIButton = {
+        var attributedString = AttributedString("열기")
+        attributedString.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "열기"
+        configuration.attributedTitle = attributedString
         configuration.baseBackgroundColor = .tintColor
         configuration.baseForegroundColor = .white
         configuration.cornerStyle = .capsule
-        configuration.contentInsets = .init(top: 8, leading: 24, bottom: 8, trailing: 24)
         let button = UIButton(configuration: configuration)
         
         return button
     }()
     
     private let shareButton: UIButton = {
-        var button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        button.tintColor = .tintColor
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))
+        configuration.baseForegroundColor = .tintColor
+        
+        let button = UIButton(configuration: configuration)
         
         return button
     }()
@@ -92,12 +96,14 @@ extension AppCard: Presentable {
             $0.leading.equalTo(imageView.snp.trailing).offset(20)
         }
         subtitleLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(3)
             $0.leading.equalTo(titleLabel.snp.leading)
         }
         openButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.leading)
+            $0.width.equalTo(80)
+            $0.height.equalTo(34)
         }
         shareButton.snp.makeConstraints {
             $0.centerY.equalTo(openButton.snp.centerY)

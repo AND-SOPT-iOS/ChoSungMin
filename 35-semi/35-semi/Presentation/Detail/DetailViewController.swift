@@ -116,7 +116,7 @@ final class DetailViewController: BaseViewController {
         appCard.snp.makeConstraints {
             $0.top.equalTo(scrollViewContentView)
             $0.leading.trailing.equalTo(scrollViewContentView)
-            $0.height.equalTo(140)
+            $0.height.equalTo(120)
         }
         
         summaryStackView.snp.makeConstraints {
