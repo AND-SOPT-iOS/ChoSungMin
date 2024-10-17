@@ -155,7 +155,7 @@ extension DetailViewController: NewsDelegate {
     func navigateToRecordViewController() {
         self.navigationController?
             .pushViewController(
-                NewsViewController(),
+                VersionRecordViewController(),
                 animated: true
             )
     }

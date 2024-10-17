@@ -120,6 +120,8 @@ extension News: Presentable {
         
         navigationButton.snp.makeConstraints {
             $0.bottom.equalTo(titleLabel.snp.bottom)
+            $0.width.equalTo(80)
+            $0.height.equalTo(40)
             $0.trailing.equalToSuperview()
         }
         
