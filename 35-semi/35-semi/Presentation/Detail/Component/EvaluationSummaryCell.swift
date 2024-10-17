@@ -68,7 +68,7 @@ final class EvaluationSummaryCell: UIView {
         setupStars(score: score)
     }
     
-    func setupStars(score: Double) {
+    private func setupStars(score: Double) {
         starStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         
         let fullStars = Int(score)

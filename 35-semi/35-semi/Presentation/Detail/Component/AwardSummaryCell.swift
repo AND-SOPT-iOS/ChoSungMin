@@ -49,7 +49,7 @@ class AwardSummaryCell: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateUI(award: Award) {
+    private func updateUI(award: Award) {
         switch award {
         case .editorChoice:
             titleLabel.text = "수상"
