@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum Award {
-    
-    case editorChoice
-    
-}
-
 class AwardSummaryCell: UIView {
     
     private let titleLabel: UILabel = {
