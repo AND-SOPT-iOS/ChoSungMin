@@ -11,10 +11,10 @@ final class PreviewScreenshot: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = .cat
-        imageView.layer.cornerRadius = 10
-        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
+        imageView.image = .cat
         
         return imageView
     }()
@@ -24,6 +24,25 @@ final class PreviewScreenshot: UIView {
         label.text = "미리보기"
         label.font = .systemFont(ofSize: 30, weight: .bold)
         label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private let deviceIcon: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "iphone.gen3")
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = .secondaryLabel
+        
+        return imageView
+    }()
+    
+    private let deviceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "iPhone"
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.numberOfLines = 0
+        label.textColor = .secondaryLabel
         
         return label
     }()
@@ -46,7 +65,7 @@ extension PreviewScreenshot: Presentable {
     func setStyle() { }
     
     func setUI() {
-        [titleLabel, imageView].forEach {
+        [titleLabel, imageView, deviceIcon, deviceLabel].forEach {
             addSubview($0)
         }
     }
@@ -58,7 +77,17 @@ extension PreviewScreenshot: Presentable {
         }
         imageView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(400)
+        }
+        deviceIcon.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview()
+            $0.width.height.equalTo(20)
+        }
+        deviceLabel.snp.makeConstraints {
+            $0.centerY.equalTo(deviceIcon.snp.centerY)
+            $0.leading.equalTo(deviceIcon.snp.trailing).offset(10)
         }
     }
     

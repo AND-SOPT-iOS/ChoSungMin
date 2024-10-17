@@ -149,7 +149,7 @@ final class DetailViewController: BaseViewController {
         previewScreenshot.snp.makeConstraints {
             $0.top.equalTo(news.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
-            $0.height.equalTo(400)
+            $0.height.equalTo(500)
         }
         
         if let lastView = scrollViewContentView.subviews.last {
