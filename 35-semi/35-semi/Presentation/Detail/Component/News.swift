@@ -27,9 +27,11 @@ final class News: UIView {
     }()
     
     private lazy var navigationButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("버전 기록", for: .normal)
-        button.setTitleColor(.tintColor, for: .normal)
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "버전 기록"
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        let button = UIButton(configuration: configuration)
         button.addTarget(self, action: #selector(navigationButtonTapped), for: .touchUpInside)
         
         return button
@@ -120,8 +122,6 @@ extension News: Presentable {
         
         navigationButton.snp.makeConstraints {
             $0.bottom.equalTo(titleLabel.snp.bottom)
-            $0.width.equalTo(80)
-            $0.height.equalTo(40)
             $0.trailing.equalToSuperview()
         }
         
