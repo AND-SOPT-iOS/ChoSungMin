@@ -22,7 +22,8 @@ final class DetailViewController: BaseViewController {
     }()
     
     private lazy var appCard: AppCard = {
-        let appCard = AppCard(image: self.appImage, title: self.appTitle, subtitle: self.appSubtitle)
+        //TODO: 기본 이미지 추가하기
+        let appCard = AppCard(image: UIImage(named: "\(self.detail.imageName)") ?? UIImage.toss, title: self.detail.title, subtitle: self.detail.subtitle)
         
         return appCard
     }()
@@ -51,15 +52,19 @@ final class DetailViewController: BaseViewController {
         return agelimitSummaryCell
     }()
     
-    // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
-    private let appTitle: String
-    private let appSubtitle: String
-    private let appImage: UIImage
+    private lazy var news: News = {
+        let news = News(version: self.detail.version, news: self.detail.news, updateDate: self.detail.updateDate)
+        news.delegate = self
+        
+        return news
+    }()
     
-    init(appTitle: String, appSubtitle: String, appImage: UIImage) {
-        self.appTitle = appTitle
-        self.appSubtitle = appSubtitle
-        self.appImage = appImage
+    // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
+    private let detail: AppDetail
+    
+    // TODO: News ViewController를 주입 받아야 할지 결정
+    init(detail: AppDetail) {
+        self.detail = detail
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -89,7 +94,7 @@ final class DetailViewController: BaseViewController {
     override func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
-        [appCard, summaryStackView].forEach {
+        [appCard, summaryStackView, news].forEach {
             scrollViewContentView.addSubview($0)
         }
         [evaluationSummaryCell, awardSummaryCell, ageLimitSummaryCell].forEach {
@@ -103,7 +108,8 @@ final class DetailViewController: BaseViewController {
         }
         
         scrollViewContentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.contentLayoutGuide).inset(20)
+            $0.top.equalTo(scrollView.contentLayoutGuide)
+            $0.leading.trailing.bottom.equalTo(scrollView.contentLayoutGuide).inset(20)
             $0.width.equalTo(scrollView.frameLayoutGuide).inset(20)
         }
         
@@ -119,10 +125,6 @@ final class DetailViewController: BaseViewController {
             $0.height.equalTo(96)
         }
         
-        scrollViewContentView.snp.makeConstraints {
-            $0.bottom.equalTo(summaryStackView.snp.bottom)
-        }
-        
         evaluationSummaryCell.snp.makeConstraints {
             $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
         }
@@ -135,11 +137,46 @@ final class DetailViewController: BaseViewController {
             $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
         }
         
+        news.snp.makeConstraints {
+            $0.leading.trailing.equalTo(scrollViewContentView)
+            $0.top.equalTo(summaryStackView.snp.bottom).offset(20)
+            $0.height.equalTo(160)
+        }
+        
+        scrollViewContentView.snp.makeConstraints {
+            $0.bottom.equalTo(news.snp.bottom)
+        }
     }
     
 }
 
+extension DetailViewController: NewsDelegate {
+    
+    func navigateToRecordViewController() {
+        self.navigationController?
+            .pushViewController(
+                NewsViewController(),
+                animated: true
+            )
+    }
+    
+}
+
+
 #Preview
 {
-    DetailViewController(appTitle: "토스", appSubtitle: "금융이 쉬워진다", appImage: .toss)
+    DetailViewController(
+        detail: AppDetail(
+            title: "토스",
+            subtitle: "금융이 쉬원진다",
+            imageName: "toss",
+            version: "5.183.0",
+            news: "- 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요.",
+            updateDate: Date(
+                year: 2024,
+                month: 9,
+                day: 13
+            )
+        )
+    )
 }
