@@ -103,18 +103,18 @@ final class DetailViewController: BaseViewController {
         }
         
         scrollViewContentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.width.equalTo(scrollView.frameLayoutGuide)
+            $0.edges.equalTo(scrollView.contentLayoutGuide).inset(20)
+            $0.width.equalTo(scrollView.frameLayoutGuide).inset(20)
         }
         
         appCard.snp.makeConstraints {
             $0.top.equalTo(scrollViewContentView)
             $0.leading.trailing.equalTo(scrollViewContentView)
-            $0.height.equalTo(200)
+            $0.height.equalTo(140)
         }
         
         summaryStackView.snp.makeConstraints {
-            $0.top.equalTo(appCard.snp.bottom)
+            $0.top.equalTo(appCard.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(96)
         }

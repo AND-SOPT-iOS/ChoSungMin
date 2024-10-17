@@ -84,11 +84,11 @@ extension AppCard: Presentable {
     
     func setLayout() {
         imageView.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(20)
+            $0.top.leading.bottom.equalToSuperview()
             $0.width.equalTo(imageView.snp.height)
         }
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
+            $0.top.equalToSuperview()
             $0.leading.equalTo(imageView.snp.trailing).offset(20)
         }
         subtitleLabel.snp.makeConstraints {
@@ -101,7 +101,7 @@ extension AppCard: Presentable {
         }
         shareButton.snp.makeConstraints {
             $0.centerY.equalTo(openButton.snp.centerY)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview()
             $0.width.height.equalTo(openButton.snp.height)
         }
     }
