@@ -59,6 +59,12 @@ final class DetailViewController: BaseViewController {
         return news
     }()
     
+    private let previewScreenshot: PreviewScreenshot = {
+        let previewScreenshot = PreviewScreenshot()
+        
+        return previewScreenshot
+    }()
+    
     // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
     private let detail: AppDetail
     
@@ -80,11 +86,7 @@ final class DetailViewController: BaseViewController {
     }
     
     @objc func backButtonTapped() {
-        if self.navigationController == nil {
-            self.dismiss(animated: true)
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func setStyle() {
@@ -94,7 +96,7 @@ final class DetailViewController: BaseViewController {
     override func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
-        [appCard, summaryStackView, news].forEach {
+        [appCard, summaryStackView, news, previewScreenshot].forEach {
             scrollViewContentView.addSubview($0)
         }
         [evaluationSummaryCell, awardSummaryCell, ageLimitSummaryCell].forEach {
@@ -143,8 +145,17 @@ final class DetailViewController: BaseViewController {
             $0.height.equalTo(160)
         }
         
-        scrollViewContentView.snp.makeConstraints {
-            $0.bottom.equalTo(news.snp.bottom)
+        // TODO: previewScreenshot 레이아웃 수정
+        previewScreenshot.snp.makeConstraints {
+            $0.top.equalTo(news.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(scrollViewContentView)
+            $0.height.equalTo(400)
+        }
+        
+        if let lastView = scrollViewContentView.subviews.last {
+            scrollViewContentView.snp.makeConstraints {
+                $0.bottom.equalTo(lastView.snp.bottom)
+            }
         }
     }
     
