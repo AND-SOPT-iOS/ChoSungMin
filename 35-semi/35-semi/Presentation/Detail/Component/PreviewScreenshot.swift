@@ -75,16 +75,19 @@ extension PreviewScreenshot: Presentable {
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }
+        
         imageView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(400)
         }
+        
         deviceIcon.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(10)
             $0.leading.equalToSuperview()
             $0.width.height.equalTo(20)
         }
+        
         deviceLabel.snp.makeConstraints {
             $0.centerY.equalTo(deviceIcon.snp.centerY)
             $0.leading.equalTo(deviceIcon.snp.trailing).offset(10)

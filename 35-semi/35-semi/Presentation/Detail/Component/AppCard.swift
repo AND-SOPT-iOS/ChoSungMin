@@ -93,20 +93,24 @@ extension AppCard: Presentable {
             $0.top.leading.bottom.equalToSuperview()
             $0.width.equalTo(imageView.snp.height)
         }
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalTo(imageView.snp.trailing).offset(20)
         }
+        
         subtitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(3)
             $0.leading.equalTo(titleLabel.snp.leading)
         }
+        
         openButton.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.leading.equalTo(titleLabel.snp.leading)
             $0.width.equalTo(80)
             $0.height.equalTo(34)
         }
+        
         shareButton.snp.makeConstraints {
             $0.centerY.equalTo(openButton.snp.centerY)
             $0.trailing.equalToSuperview()

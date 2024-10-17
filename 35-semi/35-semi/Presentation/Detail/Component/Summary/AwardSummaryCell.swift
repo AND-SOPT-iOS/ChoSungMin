@@ -68,10 +68,12 @@ extension AwardSummaryCell: Presentable {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)
         }
+        
         awardImageView.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.centerY.equalTo(snp.centerY)
         }
+        
         typeLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()

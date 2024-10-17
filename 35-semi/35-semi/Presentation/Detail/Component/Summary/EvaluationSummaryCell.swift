@@ -108,10 +108,12 @@ extension EvaluationSummaryCell: Presentable {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)
         }
+        
         scorelabel.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.centerY.equalTo(snp.centerY)
         }
+        
         starStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()

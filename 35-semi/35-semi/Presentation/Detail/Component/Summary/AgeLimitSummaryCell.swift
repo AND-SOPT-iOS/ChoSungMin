@@ -66,10 +66,12 @@ extension AgeLimitSummaryCell: Presentable {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)
         }
+        
         ageLimitLabel.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.centerY.equalTo(snp.centerY)
         }
+        
         generationLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
