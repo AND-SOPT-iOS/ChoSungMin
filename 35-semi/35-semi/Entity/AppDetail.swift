@@ -16,5 +16,9 @@ struct AppDetail {
     let version: String
     let news: String
     let updateDate: Date
+    let evaluationCount: Int
+    let score: Double
+    let ageLimit: Int
+    let award: Award
     
 }

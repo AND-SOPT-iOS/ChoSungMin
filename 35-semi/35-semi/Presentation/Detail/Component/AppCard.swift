@@ -14,6 +14,8 @@ final class AppCard: UIView {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 20
+        imageView.layer.borderWidth = 0.3
+        imageView.layer.borderColor = UIColor.secondaryLabel.cgColor
         
         return imageView
     }()

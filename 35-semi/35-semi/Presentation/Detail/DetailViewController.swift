@@ -34,20 +34,20 @@ final class DetailViewController: BaseViewController {
         return summaryStackView
     }()
     
-    private let evaluationSummaryCell: EvaluationSummaryCell = {
-        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: 36543, score: 4.4)
+    private lazy var evaluationSummaryCell: EvaluationSummaryCell = {
+        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: detail.evaluationCount, score: detail.score)
         
         return evaluationSummaryCell
     }()
     
-    private let awardSummaryCell: AwardSummaryCell = {
-        let awardSummaryCell = AwardSummaryCell(award: .editorChoice)
+    private lazy var awardSummaryCell: AwardSummaryCell = {
+        let awardSummaryCell = AwardSummaryCell(award: detail.award)
         
         return awardSummaryCell
     }()
     
-    private let ageLimitSummaryCell: AgeLimitSummaryCell = {
-        let agelimitSummaryCell = AgeLimitSummaryCell(ageLimit: 4)
+    private lazy var ageLimitSummaryCell: AgeLimitSummaryCell = {
+        let agelimitSummaryCell = AgeLimitSummaryCell(ageLimit: detail.ageLimit)
         
         return agelimitSummaryCell
     }()
@@ -187,7 +187,11 @@ extension DetailViewController: NewsDelegate {
                 year: 2024,
                 month: 9,
                 day: 13
-            )
+            ),
+            evaluationCount: 36534,
+            score: 4.4,
+            ageLimit: 4,
+            award: .editorChoice
         )
     )
 }
