@@ -91,7 +91,8 @@ final class MainViewController: BaseViewController {
 • 송금을 안전하게, 송금 전 사기계좌를 미리 조회해 안전하게 송금할 수 있어요.
 • 송금을 간편하게, 단 한 번의 터치까지 줄였어요. 최소한의 터치로 송금하세요.
 • 그리고 마음까지, 간단한 메시지와 이모티콘을 함께 보내보 세요.
-"""
+""",
+                developer: "Viva Republica"
             )
         )
         self.navigationController?.pushViewController(

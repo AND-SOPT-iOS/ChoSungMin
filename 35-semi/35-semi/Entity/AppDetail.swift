@@ -21,5 +21,6 @@ struct AppDetail {
     let ageLimit: Int
     let award: Award
     let explanation: String
+    let developer: String
     
 }

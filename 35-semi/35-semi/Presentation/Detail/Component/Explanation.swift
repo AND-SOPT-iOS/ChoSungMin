@@ -29,6 +29,7 @@ final class Explanation: UIView {
         return label
     }()
     
+    // TODO: 다크모드와 라이트모드 UIColor.clear 이슈 해결
     private let moreLabelLeftView: UIView = {
         let view = UIView()
 

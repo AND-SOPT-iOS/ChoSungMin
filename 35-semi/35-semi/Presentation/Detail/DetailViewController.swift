@@ -9,6 +9,7 @@ import UIKit
 
 final class DetailViewController: BaseViewController {
     
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -53,7 +54,7 @@ final class DetailViewController: BaseViewController {
     }()
     
     private lazy var news: News = {
-        let news = News(version: self.detail.version, news: self.detail.news, updateDate: self.detail.updateDate)
+        let news = News(version: detail.version, news: detail.news, updateDate: detail.updateDate)
         news.delegate = self
         
         return news
@@ -69,6 +70,13 @@ final class DetailViewController: BaseViewController {
         let explanation = Explanation(explanation: detail.explanation)
         
         return explanation
+    }()
+    
+    private lazy var developer: Developer = {
+        let developer = Developer(developerName: detail.developer)
+        developer.delegate = self
+        
+        return developer
     }()
     
     // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
@@ -102,7 +110,7 @@ final class DetailViewController: BaseViewController {
     override func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
-        [appCard, summaryStackView, news, previewScreenshot, explanation].forEach {
+        [appCard, summaryStackView, news, previewScreenshot, explanation, developer].forEach {
             scrollViewContentView.addSubview($0)
         }
         [evaluationSummaryCell, awardSummaryCell, ageLimitSummaryCell].forEach {
@@ -163,6 +171,12 @@ final class DetailViewController: BaseViewController {
             $0.leading.trailing.equalTo(scrollViewContentView)
         }
         
+        developer.snp.makeConstraints {
+            $0.top.equalTo(explanation.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(scrollViewContentView)
+            $0.height.equalTo(40)
+        }
+        
         if let lastView = scrollViewContentView.subviews.last {
             scrollViewContentView.snp.makeConstraints {
                 $0.bottom.equalTo(lastView.snp.bottom)
@@ -175,7 +189,7 @@ final class DetailViewController: BaseViewController {
 extension DetailViewController: NewsDelegate {
     
     func navigateToRecordViewController() {
-        self.navigationController?
+        navigationController?
             .pushViewController(
                 VersionRecordViewController(),
                 animated: true
@@ -183,6 +197,19 @@ extension DetailViewController: NewsDelegate {
     }
     
 }
+
+extension DetailViewController: DeveloperDelegate {
+    
+    func developerTapped() {
+        navigationController?
+            .pushViewController(
+                DeveloperViewController(),
+                animated: true
+            )
+    }
+    
+}
+
 
 #Preview
 {
@@ -216,7 +243,8 @@ extension DetailViewController: NewsDelegate {
 • 송금을 안전하게, 송금 전 사기계좌를 미리 조회해 안전하게 송금할 수 있어요.
 • 송금을 간편하게, 단 한 번의 터치까지 줄였어요. 최소한의 터치로 송금하세요.
 • 그리고 마음까지, 간단한 메시지와 이모티콘을 함께 보내보 세요.
-"""
+""",
+            developer: "Viva Republica"
         )
     )
 }
