@@ -14,6 +14,7 @@ final class Explanation: UIView {
     private lazy var explanationLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 3
+        label.font = .systemFont(ofSize: 14)
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(tapGestrue)
         
@@ -46,10 +47,10 @@ final class Explanation: UIView {
         return view
     }()
     
-    private let orginalExplanation: String
+    private let originalExplanation: String
     
     init(explanation: String) {
-        self.orginalExplanation = explanation
+        self.originalExplanation = explanation
         super.init(frame: .zero)
         setStyle()
         setUI()
@@ -70,7 +71,7 @@ final class Explanation: UIView {
         explanationLabel.numberOfLines = .max
         explanationLabel.removeGestureRecognizer(tapGestrue)
         moreLabel.removeFromSuperview()
-        explanationLabel.text = orginalExplanation
+        explanationLabel.setLineSpacingText(text: originalExplanation, spacing: 8)
     }
     
     private func updateUI(explanation: String) {
@@ -78,7 +79,7 @@ final class Explanation: UIView {
         while trimmedExplanation.contains("\n\n") {
             trimmedExplanation = trimmedExplanation.replacingOccurrences(of: "\n\n", with: "\n")
         }
-        explanationLabel.text = trimmedExplanation
+        explanationLabel.setLineSpacingText(text: trimmedExplanation, spacing: 8)
     }
     
 }

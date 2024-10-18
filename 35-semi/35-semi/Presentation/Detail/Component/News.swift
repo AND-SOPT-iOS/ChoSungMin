@@ -14,13 +14,14 @@ final class News: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "새로운 소식"
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 24, weight: .bold)
         
         return label
     }()
     
     private let versionLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
         label.textColor = .secondaryLabel
         
         return label
@@ -39,6 +40,7 @@ final class News: UIView {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
         label.textColor = .secondaryLabel
         
         return label
@@ -46,6 +48,7 @@ final class News: UIView {
     
     private let newsLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 3
         
         return label
@@ -72,8 +75,8 @@ final class News: UIView {
     }
     
     private func updateView(version: String, news: String, updateDate: Date) {
-        versionLabel.text = version
-        newsLabel.setLineSpacingText(text: news, 4)
+        versionLabel.text = "버전 " + version
+        newsLabel.setLineSpacingText(text: news, spacing: 8)
         dateLabel.text = convertDateFormat(date: updateDate)
     }
     

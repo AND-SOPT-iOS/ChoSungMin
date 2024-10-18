@@ -9,10 +9,10 @@ import UIKit
 
 extension UILabel {
     
-    func setLineSpacingText(text: String, _ lineSpacing: CGFloat) {
+    func setLineSpacingText(text: String, spacing: CGFloat) {
         let attributedStr = NSMutableAttributedString(string: text)
         let style = NSMutableParagraphStyle()
-        style.lineSpacing = lineSpacing
+        style.lineSpacing = spacing
         attributedStr.addAttribute(
             NSAttributedString.Key.paragraphStyle,
             value: style,

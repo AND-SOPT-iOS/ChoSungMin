@@ -11,6 +11,7 @@ class AwardSummaryCell: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
         
         return label
@@ -25,6 +26,7 @@ class AwardSummaryCell: UIView {
     
     private let typeLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
         
         return label

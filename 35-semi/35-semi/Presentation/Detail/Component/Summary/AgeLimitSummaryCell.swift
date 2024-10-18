@@ -12,6 +12,7 @@ final class AgeLimitSummaryCell: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "연령"
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
         
         return label
@@ -19,7 +20,7 @@ final class AgeLimitSummaryCell: UIView {
     
     private let ageLimitLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .secondaryLabel
         
         return label
@@ -28,6 +29,7 @@ final class AgeLimitSummaryCell: UIView {
     private let generationLabel: UILabel = {
         let label = UILabel()
         label.text = "세"
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
 
         return label

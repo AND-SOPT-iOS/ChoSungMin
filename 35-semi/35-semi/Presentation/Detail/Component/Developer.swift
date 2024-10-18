@@ -14,6 +14,7 @@ final class Developer: UIView {
     private let developerNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Developer"
+        label.font = .systemFont(ofSize: 14)
         label.textColor = .tintColor
         
         return label
@@ -22,6 +23,7 @@ final class Developer: UIView {
     private let developerLabel: UILabel = {
         let label = UILabel()
         label.text = "개발자"
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
         
         return label

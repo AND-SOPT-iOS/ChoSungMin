@@ -11,6 +11,7 @@ final class EvaluationSummaryCell: UIView {
     
     private let countLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .secondaryLabel
         
         return label
@@ -18,7 +19,7 @@ final class EvaluationSummaryCell: UIView {
     
     private let scorelabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .secondaryLabel
         
         return label
@@ -88,6 +89,9 @@ final class EvaluationSummaryCell: UIView {
                 starImageView.image = UIImage(systemName: "star")
             }
             starStackView.addArrangedSubview(starImageView)
+            starImageView.snp.makeConstraints {
+                $0.width.height.equalTo(16)
+            }
         }
     }
     

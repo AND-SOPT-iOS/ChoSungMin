@@ -138,7 +138,7 @@ final class DetailViewController: BaseViewController {
         summaryStackView.snp.makeConstraints {
             $0.top.equalTo(appCard.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(96)
+            $0.height.equalTo(72)
         }
         
         evaluationSummaryCell.snp.makeConstraints {

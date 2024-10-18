@@ -22,7 +22,7 @@ final class PreviewScreenshot: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "미리보기"
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 24, weight: .bold)
         label.numberOfLines = 0
         
         return label
@@ -40,7 +40,7 @@ final class PreviewScreenshot: UIView {
     private let deviceLabel: UILabel = {
         let label = UILabel()
         label.text = "iPhone"
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: 12, weight: .medium)
         label.numberOfLines = 0
         label.textColor = .secondaryLabel
         
