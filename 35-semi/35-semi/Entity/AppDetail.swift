@@ -20,5 +20,6 @@ struct AppDetail {
     let score: Double
     let ageLimit: Int
     let award: Award
+    let explanation: String
     
 }
