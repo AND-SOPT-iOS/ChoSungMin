@@ -45,7 +45,10 @@ final class Explanation: UIView {
         return view
     }()
     
+    private let orginalExplanation: String
+    
     init(explanation: String) {
+        self.orginalExplanation = explanation
         super.init(frame: .zero)
         setStyle()
         setUI()
@@ -66,10 +69,15 @@ final class Explanation: UIView {
         explanationLabel.numberOfLines = .max
         explanationLabel.removeGestureRecognizer(tapGestrue)
         moreLabel.removeFromSuperview()
+        explanationLabel.text = orginalExplanation
     }
     
     private func updateUI(explanation: String) {
-        explanationLabel.text = explanation
+        var trimmedExplanation = explanation
+        while trimmedExplanation.contains("\n\n") {
+            trimmedExplanation = trimmedExplanation.replacingOccurrences(of: "\n\n", with: "\n")
+        }
+        explanationLabel.text = trimmedExplanation
     }
     
 }
@@ -107,14 +115,18 @@ extension Explanation: Presentable {
 {
     Explanation(explanation: """
 토스뱅크, 토스증권 서비스를 이용하시려면 토스 앱 설치가 필요합니다.
+
 • 모든 계좌의 모든 정보를 한 곳에서, 따로 보았던 예적금, 청약, 증권, 대출 계좌의 정보를 한 곳에서 확인할 수 있어요.
 • 얼마나 벌고 얼마나 썼을까? 한 달 동안의 수입과 소비를 시간 순으로 모아볼 수 있고, 소비 분석 리포트도 제공해드려요.
+
 • 카드 실적 헷갈릴 필요 없이, 실적을 충족한 카드가 무엇인지 얼마나 더 써야 실적을 달성하는지 한눈에 확인할 수 있어요.
 • 매달 고정적으로 나가는 보험비, 생활요금, 구독료 등도 쉽게 확인할 수 있어요.
 
 • 평생 무료로 간편하고 안전하게, 송금
 • 송금을 자유롭게, 토스에서는 은행 상관없이 수수료가 평생 무료에요.
 • 송금을 안전하게, 송금 전 사기계좌를 미리 조회해 안전하게 송금할 수 있어요.
+
+
 • 송금을 간편하게, 단 한 번의 터치까지 줄였어요. 최소한의 터치로 송금하세요.
 • 그리고 마음까지, 간단한 메시지와 이모티콘을 함께 보내보 세요.
 """)
