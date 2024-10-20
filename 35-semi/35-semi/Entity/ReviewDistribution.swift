@@ -9,41 +9,65 @@ import Foundation
 
 struct ReviewDistribution {
     
-    private let one: Int
-    private let two: Int
-    private let three: Int
-    private let four: Int
     private let five: Int
+    private let four: Int
+    private let three: Int
+    private let two: Int
+    private let one: Int
     
-    init(one: Int, two: Int, three: Int, four: Int, five: Int) {
-        self.one = one
-        self.two = two
-        self.three = three
-        self.four = four
-        self.five = five
-    }
     
-    var oneRatio: Double {
-        Double(one) / Double(totalCount)
-    }
-    var twoRatio: Double {
-        Double(two) / Double(totalCount)
-    }
-    var threeRatio: Double {
-        Double(three) / Double(totalCount)
-    }
-    var fourRatio: Double {
-        Double(four) / Double(totalCount)
-    }
-    var fiveRatio: Double {
-        Double(five) / Double(totalCount)
-    }
     var averageScore: Double {
         let rawScore = Double(one + two * 2 + three * 3 + four * 4 + five * 5) / Double(totalCount)
         return round(rawScore * 10) / 10
     }
+    
     var totalCount: Int {
         one + two + three + four + five
+    }
+    
+    var translatedTotalCountString: String {
+        var text = ""
+        if totalCount >= 10000 {
+            let result = Double(totalCount) / 10000
+            if result == floor(result) {
+                text = String(format: "%.0f만", result)
+            } else {
+                text = String(format: "%.1f만", result)
+            }
+        } else if totalCount >= 1000 {
+            let result = Double(totalCount) / 1000
+            if result == floor(result) {
+                text = String(format: "%.0f천", result)
+            } else {
+                text = String(format: "%.1f천", result)
+            }
+        } else {
+            text = String(totalCount)
+        }
+        return text
+    }
+    
+    init(five: Int, four: Int, three: Int, two: Int, one: Int) {
+        self.five = five
+        self.four = four
+        self.three = three
+        self.two = two
+        self.one = one
+    }
+    
+    func getRatio(score: Score) -> Double {
+        switch score {
+        case .five:
+            Double(five) / Double(totalCount)
+        case .four:
+            Double(four) / Double(totalCount)
+        case .three:
+            Double(three) / Double(totalCount)
+        case .two:
+            Double(two) / Double(totalCount)
+        case .one:
+            Double(one) / Double(totalCount)
+        }
     }
     
 }

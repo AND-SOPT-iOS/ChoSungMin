@@ -32,38 +32,20 @@ final class EvaluationSummaryCell: UIView {
         return stackView
     }()
     
-    init(evaluationCount: Int, score: Double) {
+    init(evaluationCountString: String, score: Double) {
         super.init(frame: .zero)
         setStyle()
         setUI()
         setLayout()
-        updateView(evaluationCount: evaluationCount, score: score)
+        updateView(evaluationCountString: evaluationCountString, score: score)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func updateView(evaluationCount: Int, score: Double) {
-        var text = ""
-        if evaluationCount >= 10000 {
-            let result = Double(evaluationCount) / 10000
-            if result == floor(result) {
-                text = String(format: "%.0f만", result)
-            } else {
-                text = String(format: "%.1f만", result)
-            }
-        } else if evaluationCount >= 1000 {
-            let result = Double(evaluationCount) / 1000
-            if result == floor(result) {
-                text = String(format: "%.0f천", result)
-            } else {
-                text = String(format: "%.1f천", result)
-            }
-        } else {
-            text = String(evaluationCount)
-        }
-        countLabel.text = text + "개의 평가"
+    private func updateView(evaluationCountString: String, score: Double) {
+        countLabel.text = evaluationCountString + "개의 평가"
         scorelabel.text = String(format: "%.1f", score)
         
         setupStars(score: score)
@@ -128,7 +110,7 @@ extension EvaluationSummaryCell: Presentable {
 
 #Preview
 {
-    let cell = EvaluationSummaryCell(evaluationCount: 36000, score: 4.4)
+    let cell = EvaluationSummaryCell(evaluationCountString: "3.6만", score: 4.4)
     cell.snp.makeConstraints { make in
         make.width.equalTo(100)
         make.height.equalTo(200)
