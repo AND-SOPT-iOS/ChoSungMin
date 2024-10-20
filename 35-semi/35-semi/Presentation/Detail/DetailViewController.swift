@@ -36,7 +36,10 @@ final class DetailViewController: BaseViewController {
     }()
     
     private lazy var evaluationSummaryCell: EvaluationSummaryCell = {
-        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: detail.reviewDistribution.totalCount, score: detail.reviewDistribution.averageScore)
+        let evaluationSummaryCell = EvaluationSummaryCell(
+            evaluationCountString: detail.reviewDistribution.translatedTotalCountString,
+            score: detail.reviewDistribution.averageScore
+        )
         
         return evaluationSummaryCell
     }()
@@ -79,6 +82,12 @@ final class DetailViewController: BaseViewController {
         return developer
     }()
     
+    private lazy var evaluationWithReview: EvaluationWithReview = {
+        let evaluationWithReview = EvaluationWithReview(reviewDistribution: detail.reviewDistribution)
+        
+        return evaluationWithReview
+    }()
+    
     // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
     private let detail: AppDetail
     
@@ -110,10 +119,22 @@ final class DetailViewController: BaseViewController {
     override func setUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
-        [appCard, summaryStackView, news, previewScreenshot, explanation, developer].forEach {
+        [
+            appCard,
+            summaryStackView,
+            news,
+            previewScreenshot,
+            explanation,
+            developer,
+            evaluationWithReview
+        ].forEach {
             scrollViewContentView.addSubview($0)
         }
-        [evaluationSummaryCell, awardSummaryCell, ageLimitSummaryCell].forEach {
+        [
+            evaluationSummaryCell,
+            awardSummaryCell,
+            ageLimitSummaryCell
+        ].forEach {
             summaryStackView.addArrangedSubview($0)
         }
     }
@@ -175,6 +196,12 @@ final class DetailViewController: BaseViewController {
             $0.top.equalTo(explanation.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(40)
+        }
+        
+        evaluationWithReview.snp.makeConstraints {
+            $0.top.equalTo(developer.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(scrollViewContentView)
+            $0.height.equalTo(140)
         }
         
         if let lastView = scrollViewContentView.subviews.last {
@@ -258,11 +285,11 @@ extension DetailViewController: DeveloperDelegate {
                 )
             ],
             reviewDistribution: ReviewDistribution(
-                one: 10920,
-                two: 840,
-                three: 2520,
+                five: 58800,
                 four: 10920,
-                five: 58800
+                three: 2520,
+                two: 840,
+                one: 10920
             )
         )
     )
