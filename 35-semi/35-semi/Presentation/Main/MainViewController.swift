@@ -70,8 +70,6 @@ final class MainViewController: BaseViewController {
                     month: 9,
                     day: 13
                 ),
-                evaluationCount: 36534,
-                score: 4.4,
                 ageLimit: 4,
                 award: .editorChoice,
                 explanation: """
@@ -104,7 +102,14 @@ final class MainViewController: BaseViewController {
                         무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
                         """
                     )
-                ]
+                ],
+                reviewDistribution: ReviewDistribution(
+                    one: 58800,
+                    two: 10920,
+                    three: 2520,
+                    four: 840,
+                    five: 10920
+                )
             )
         )
         self.navigationController?.pushViewController(

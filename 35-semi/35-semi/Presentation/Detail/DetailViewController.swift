@@ -36,7 +36,7 @@ final class DetailViewController: BaseViewController {
     }()
     
     private lazy var evaluationSummaryCell: EvaluationSummaryCell = {
-        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: detail.evaluationCount, score: detail.score)
+        let evaluationSummaryCell = EvaluationSummaryCell(evaluationCount: detail.reviewDistribution.totalCount, score: detail.reviewDistribution.averageScore)
         
         return evaluationSummaryCell
     }()
@@ -225,8 +225,6 @@ extension DetailViewController: DeveloperDelegate {
                 month: 9,
                 day: 13
             ),
-            evaluationCount: 36534,
-            score: 4.4,
             ageLimit: 4,
             award: .editorChoice,
             explanation: """
@@ -258,7 +256,14 @@ extension DetailViewController: DeveloperDelegate {
                     대한 사람 대한으로 길이 보전하세
                     """
                 )
-            ]
+            ],
+            reviewDistribution: ReviewDistribution(
+                one: 58800,
+                two: 10920,
+                three: 2520,
+                four: 840,
+                five: 10920
+            )
         )
     )
 }
