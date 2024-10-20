@@ -104,11 +104,11 @@ final class MainViewController: BaseViewController {
                     )
                 ],
                 reviewDistribution: ReviewDistribution(
-                    one: 58800,
-                    two: 10920,
+                    one: 10920,
+                    two: 840,
                     three: 2520,
-                    four: 840,
-                    five: 10920
+                    four: 10920,
+                    five: 58800
                 )
             )
         )
