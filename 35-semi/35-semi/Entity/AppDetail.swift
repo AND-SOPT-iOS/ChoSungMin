@@ -22,5 +22,6 @@ struct AppDetail {
     let award: Award
     let explanation: String
     let developer: String
+    let bestReviews: [Review]
     
 }

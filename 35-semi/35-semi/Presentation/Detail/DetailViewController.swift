@@ -244,7 +244,21 @@ extension DetailViewController: DeveloperDelegate {
 • 송금을 간편하게, 단 한 번의 터치까지 줄였어요. 최소한의 터치로 송금하세요.
 • 그리고 마음까지, 간단한 메시지와 이모티콘을 함께 보내보 세요.
 """,
-            developer: "Viva Republica"
+            developer: "Viva Republica",
+            bestReviews: [
+                Review(
+                    writer: "조성민",
+                    writeDate: Date(),
+                    title: "내가 썼다.",
+                    score: 4,
+                    content: """
+                    동해물과 백두산이 마르고 닳도록
+                    하느님이 보우하사 우리나라 만세
+                    무궁화 삼천리 화려 강산
+                    대한 사람 대한으로 길이 보전하세
+                    """
+                )
+            ]
         )
     )
 }
