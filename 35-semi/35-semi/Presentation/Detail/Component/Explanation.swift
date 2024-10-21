@@ -30,15 +30,15 @@ final class Explanation: UIView {
         return label
     }()
     
-    // TODO: 다크모드와 라이트모드 UIColor.clear 이슈 해결
     private let moreLabelLeftView: UIView = {
         let view = UIView()
+        view.backgroundColor = .clear
 
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [
-            UIColor.clear.cgColor,
-            UIColor.clear.withAlphaComponent(1).cgColor,
-            UIColor.clear.withAlphaComponent(1).cgColor
+            UIColor.systemBackground.withAlphaComponent(0).cgColor,
+            UIColor.systemBackground.withAlphaComponent(1).cgColor,
+            UIColor.systemBackground.withAlphaComponent(1).cgColor
         ]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
@@ -71,6 +71,7 @@ final class Explanation: UIView {
         explanationLabel.numberOfLines = .max
         explanationLabel.removeGestureRecognizer(tapGestrue)
         moreLabel.removeFromSuperview()
+        moreLabelLeftView.removeFromSuperview()
         explanationLabel.setLineSpacingText(text: originalExplanation, spacing: 8)
     }
     
@@ -116,10 +117,7 @@ extension Explanation: Presentable {
 #Preview
 {
     Explanation(explanation: """
-토스뱅크, 토스증권 서비스를 이용하시려면 토스 앱 설치가 필요합니다.
-
-• 모든 계좌의 모든 정보를 한 곳에서, 따로 보았던 예적금, 청약, 증권, 대출 계좌의 정보를 한 곳에서 확인할 수 있어요.
-• 얼마나 벌고 얼마나 썼을까? 한 달 동안의 수입과 소비를 시간 순으로 모아볼 수 있고, 소비 분석 리포트도 제공해드려요.
+토스뱅크, 토스증권 서비스를 이용하시려면 토스 앱 설치가 필요합니다.• 모든 계좌의 모든 정보를 한 곳에서, 따로 보았던 예적금, 청약, 증권, 대출 계좌의 정보를 한 곳에서 확인할 수 있어요.• 얼마나 벌고 얼마나 썼을까? 한 달 동안의 수입과 소비를 시간 순으로 모아볼 수 있고, 소비 분석 리포트도 제공해드려요.
 
 • 카드 실적 헷갈릴 필요 없이, 실적을 충족한 카드가 무엇인지 얼마나 더 써야 실적을 달성하는지 한눈에 확인할 수 있어요.
 • 매달 고정적으로 나가는 보험비, 생활요금, 구독료 등도 쉽게 확인할 수 있어요.
