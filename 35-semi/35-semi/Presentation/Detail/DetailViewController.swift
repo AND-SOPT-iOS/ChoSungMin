@@ -216,11 +216,10 @@ final class DetailViewController: BaseViewController {
 extension DetailViewController: NewsDelegate {
     
     func navigateToRecordViewController() {
-        navigationController?
-            .pushViewController(
-                VersionRecordViewController(),
-                animated: true
-            )
+        navigationController?.pushViewController(
+            VersionRecordViewController(),
+            animated: true
+        )
     }
     
 }
@@ -228,11 +227,10 @@ extension DetailViewController: NewsDelegate {
 extension DetailViewController: DeveloperDelegate {
     
     func developerTapped() {
-        navigationController?
-            .pushViewController(
-                DeveloperViewController(),
-                animated: true
-            )
+        navigationController?.pushViewController(
+            DeveloperViewController(),
+            animated: true
+        )
     }
     
 }
