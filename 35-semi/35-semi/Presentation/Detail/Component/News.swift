@@ -77,28 +77,7 @@ final class News: UIView {
     private func updateView(version: String, news: String, updateDate: Date) {
         versionLabel.text = "버전 " + version
         newsLabel.setLineSpacingText(text: news, spacing: 8)
-        dateLabel.text = convertDateFormat(date: updateDate)
-    }
-    
-    private func convertDateFormat(date: Date) -> String {
-        let diff = Date().timeIntervalSince(date)
-        
-        switch diff {
-        case ..<60:
-            return "방금 전"
-        case 60..<3600:
-            return "\(Int(diff / 60))분 전"
-        case 3600..<86400:
-            return "\(Int(diff / 3600))시간 전"
-        case 86400..<604800:
-            return "\(Int(diff / 86400))일 전"
-        case 604800..<2592000:
-            return "\(Int(diff / 604800))주 전"
-        case 2592000..<31536000:
-            return "\(Int(diff / 2592000))개월 전"
-        default:
-            return "\(Int(diff / 31536000))년 전"
-        }
+        dateLabel.text = updateDate.convertFromNow()
     }
     
 }

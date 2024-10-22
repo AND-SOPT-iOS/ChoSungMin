@@ -12,7 +12,7 @@ struct Review {
     let writer: String
     let writeDate: Date
     let title: String
-    let score: Int
+    let score: Score
     let content: String
     let developerAnswer: String?
     let devleoperAnswerDate: Date?
@@ -21,7 +21,7 @@ struct Review {
         writer: String,
         writeDate: Date,
         title: String,
-        score: Int,
+        score: Score,
         content: String,
         developerAnswer: String? = nil,
         devleoperAnswerDate: Date? = nil
