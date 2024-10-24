@@ -27,5 +27,4 @@ extension Date {
         self = date
     }
     
-    
 }

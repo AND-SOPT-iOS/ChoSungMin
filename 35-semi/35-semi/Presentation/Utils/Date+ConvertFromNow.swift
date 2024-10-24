@@ -36,7 +36,6 @@ extension Date {
         } else {
             let formatter = DateFormatter()
             formatter.dateFormat = "M월 d일"
-//            formatter.locale = Locale(identifier: "ko_KR")
             return formatter.string(from: self)
         }
     }
