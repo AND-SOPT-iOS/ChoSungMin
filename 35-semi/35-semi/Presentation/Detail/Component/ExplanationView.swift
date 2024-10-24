@@ -62,13 +62,14 @@ final class ExplanationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
         moreLabelLeftView.layer.sublayers?.first?.frame = moreLabelLeftView.bounds
     }
     
     @objc func explanationLabelTapped() {
-        explanationLabel.numberOfLines = .max
+        explanationLabel.numberOfLines = 0
         explanationLabel.removeGestureRecognizer(tapGestrue)
         moreLabel.removeFromSuperview()
         moreLabelLeftView.removeFromSuperview()
@@ -82,7 +83,7 @@ final class ExplanationView: UIView {
         }
         explanationLabel.setLineSpacingText(text: trimmedExplanation, spacing: 8)
         if !explanationLabel.isTruncated {
-            explanationLabel.numberOfLines = .max
+            explanationLabel.numberOfLines = 0
             explanationLabel.removeGestureRecognizer(tapGestrue)
             moreLabel.removeFromSuperview()
             moreLabelLeftView.removeFromSuperview()

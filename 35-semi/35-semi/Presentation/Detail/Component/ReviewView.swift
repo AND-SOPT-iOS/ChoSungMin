@@ -171,6 +171,13 @@ final class ReviewView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
+        contentMoreLabelLeftView.layer.sublayers?.first?.frame = contentMoreLabelLeftView.bounds
+        answerMoreLabelLeftView.layer.sublayers?.first?.frame = answerMoreLabelLeftView.bounds
+    }
+    
     private func updateUI(review: Review) {
         titleLabel.text = review.title
         dateLabel.text = review.writeDate.convertToString()

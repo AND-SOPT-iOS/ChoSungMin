@@ -95,12 +95,16 @@ final class MainViewController: BaseViewController {
                     Review(
                         writer: "조성민",
                         writeDate: Date(),
-                        title: "내가 썼다.",
-                        score: Score.five,
+                        title: "폰트 크기 복구해주세요.....",
+                        score: Score.four,
                         content: """
-                        동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리 나라만세
-                        무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
-                        """
+            오늘 토스가 어쩌구 저쩌구 오늘 토스가
+            어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구
+            저쩌구 오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구
+            오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구 오늘
+            """,
+                        developerAnswer: "ABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABC",
+                        devleoperAnswerDate: Date()
                     )
                 ],
                 reviewDistribution: ReviewDistribution(

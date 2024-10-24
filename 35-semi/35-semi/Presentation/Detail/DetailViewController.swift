@@ -219,7 +219,7 @@ final class DetailViewController: BaseViewController {
             makeReviewView.snp.makeConstraints {
                 $0.top.equalTo(evaluationWithReview.snp.bottom).offset(20)
                 $0.leading.trailing.equalTo(scrollViewContentView)
-                $0.height.equalTo(340)
+                $0.height.equalTo(500)
             }
         }
         
