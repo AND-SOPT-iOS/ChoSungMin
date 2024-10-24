@@ -88,6 +88,14 @@ final class DetailViewController: BaseViewController {
         return evaluationWithReview
     }()
     
+    private lazy var makeReviewView: MakeReview? = {
+        if let bestReview = detail.bestReviews.first {
+            return MakeReview(bestReview: bestReview)
+        } else {
+            return nil
+        }
+    }()
+    
     // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
     private let detail: AppDetail
     
@@ -126,9 +134,11 @@ final class DetailViewController: BaseViewController {
             previewScreenshot,
             explanation,
             developer,
-            evaluationWithReview
+            evaluationWithReview,
         ].forEach {
             scrollViewContentView.addSubview($0)
+        }
+        if let makeReviewView = makeReviewView {            scrollViewContentView.addSubview(makeReviewView)
         }
         [
             evaluationSummaryCell,
@@ -139,6 +149,7 @@ final class DetailViewController: BaseViewController {
         }
     }
     
+    // TODO: 모든 뷰의 크기가 Input 값에 의해 자동으로 레이아웃 잡을 수 있도록 Height 크기를 지정하지 않는 방식으로 수정해야 합니다.
     override func setLayout() {
         scrollView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
@@ -204,6 +215,14 @@ final class DetailViewController: BaseViewController {
             $0.height.equalTo(140)
         }
         
+        if let makeReviewView = makeReviewView {
+            makeReviewView.snp.makeConstraints {
+                $0.top.equalTo(evaluationWithReview.snp.bottom).offset(20)
+                $0.leading.trailing.equalTo(scrollViewContentView)
+                $0.height.equalTo(340)
+            }
+        }
+        
         if let lastView = scrollViewContentView.subviews.last {
             scrollViewContentView.snp.makeConstraints {
                 $0.bottom.equalTo(lastView.snp.bottom)
@@ -234,7 +253,6 @@ extension DetailViewController: DeveloperDelegate {
     }
     
 }
-
 
 #Preview
 {
@@ -272,14 +290,13 @@ extension DetailViewController: DeveloperDelegate {
                 Review(
                     writer: "조성민",
                     writeDate: Date(),
-                    title: "내가 썼다.",
+                    title: "제목은 제목입니다",
                     score: Score.four,
                     content: """
-                    동해물과 백두산이 마르고 닳도록
-                    하느님이 보우하사 우리나라 만세
-                    무궁화 삼천리 화려 강산
-                    대한 사람 대한으로 길이 보전하세
+                    동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세
                     """
+//                    developerAnswer: "그렇다그렇다",
+//                    devleoperAnswerDate: Date()
                 )
             ],
             reviewDistribution: ReviewDistribution(
