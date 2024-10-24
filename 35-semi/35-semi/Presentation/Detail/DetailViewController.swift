@@ -21,7 +21,7 @@ final class DetailViewController: BaseViewController {
         return scrollViewContentView
     }()
     
-    private lazy var appCard: AppCardView = {
+    private lazy var appCardView: AppCardView = {
         //TODO: 기본 이미지 추가하기
         let appCard = AppCardView(image: UIImage(named: "\(self.detail.imageName)") ?? UIImage.toss, title: self.detail.title, subtitle: self.detail.subtitle)
         
@@ -55,33 +55,33 @@ final class DetailViewController: BaseViewController {
         return agelimitSummaryCell
     }()
     
-    private lazy var news: NewsView = {
+    private lazy var newsView: NewsView = {
         let news = NewsView(version: detail.version, news: detail.news, updateDate: detail.updateDate)
         news.delegate = self
         
         return news
     }()
     
-    private let previewScreenshot: PreviewScreenshotView = {
+    private let previewScreenshotView: PreviewScreenshotView = {
         let previewScreenshot = PreviewScreenshotView()
         
         return previewScreenshot
     }()
     
-    private lazy var explanation: ExplanationView = {
+    private lazy var explanationView: ExplanationView = {
         let explanation = ExplanationView(explanation: detail.explanation)
         
         return explanation
     }()
     
-    private lazy var developer: DeveloperView = {
+    private lazy var developerView: DeveloperView = {
         let developer = DeveloperView(developerName: detail.developer)
         developer.delegate = self
         
         return developer
     }()
     
-    private lazy var evaluationWithReview: EvaluationWithReviewView = {
+    private lazy var evaluationWithReviewView: EvaluationWithReviewView = {
         let evaluationWithReview = EvaluationWithReviewView(reviewDistribution: detail.reviewDistribution)
         evaluationWithReview.delegate = self
         
@@ -128,13 +128,13 @@ final class DetailViewController: BaseViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(scrollViewContentView)
         [
-            appCard,
+            appCardView,
             summaryStackView,
-            news,
-            previewScreenshot,
-            explanation,
-            developer,
-            evaluationWithReview,
+            newsView,
+            previewScreenshotView,
+            explanationView,
+            developerView,
+            evaluationWithReviewView,
         ].forEach {
             scrollViewContentView.addSubview($0)
         }
@@ -162,63 +162,63 @@ final class DetailViewController: BaseViewController {
             $0.width.equalTo(scrollView.frameLayoutGuide).inset(20)
         }
         
-        appCard.snp.makeConstraints {
+        appCardView.snp.makeConstraints {
             $0.top.equalTo(scrollViewContentView)
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(120)
         }
         
         summaryStackView.snp.makeConstraints {
-            $0.top.equalTo(appCard.snp.bottom).offset(20)
+            $0.top.equalTo(appCardView.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(72)
         }
         
         evaluationSummaryCell.snp.makeConstraints {
-            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+            $0.width.equalTo(appCardView.snp.width).multipliedBy(0.33)
         }
         
         awardSummaryCell.snp.makeConstraints {
-            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+            $0.width.equalTo(appCardView.snp.width).multipliedBy(0.33)
         }
         
         ageLimitSummaryCell.snp.makeConstraints {
-            $0.width.equalTo(appCard.snp.width).multipliedBy(0.33)
+            $0.width.equalTo(appCardView.snp.width).multipliedBy(0.33)
         }
         
-        news.snp.makeConstraints {
+        newsView.snp.makeConstraints {
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.top.equalTo(summaryStackView.snp.bottom).offset(20)
             $0.height.equalTo(160)
         }
         
         // TODO: previewScreenshot 레이아웃 수정
-        previewScreenshot.snp.makeConstraints {
-            $0.top.equalTo(news.snp.bottom).offset(20)
+        previewScreenshotView.snp.makeConstraints {
+            $0.top.equalTo(newsView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(500)
         }
         
-        explanation.snp.makeConstraints {
-            $0.top.equalTo(previewScreenshot.snp.bottom).offset(20)
+        explanationView.snp.makeConstraints {
+            $0.top.equalTo(previewScreenshotView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
         }
         
-        developer.snp.makeConstraints {
-            $0.top.equalTo(explanation.snp.bottom).offset(20)
+        developerView.snp.makeConstraints {
+            $0.top.equalTo(explanationView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(40)
         }
         
-        evaluationWithReview.snp.makeConstraints {
-            $0.top.equalTo(developer.snp.bottom).offset(20)
+        evaluationWithReviewView.snp.makeConstraints {
+            $0.top.equalTo(developerView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(scrollViewContentView)
             $0.height.equalTo(140)
         }
         
         if let makeReviewView = makeReviewView {
             makeReviewView.snp.makeConstraints {
-                $0.top.equalTo(evaluationWithReview.snp.bottom).offset(20)
+                $0.top.equalTo(evaluationWithReviewView.snp.bottom).offset(20)
                 $0.leading.trailing.equalTo(scrollViewContentView)
                 $0.height.equalTo(500)
             }
