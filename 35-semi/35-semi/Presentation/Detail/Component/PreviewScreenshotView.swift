@@ -11,9 +11,9 @@ final class PreviewScreenshotView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = 32
         imageView.image = .cat
         
         return imageView
@@ -78,7 +78,8 @@ extension PreviewScreenshotView: Presentable {
         
         imageView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(240)
             $0.height.equalTo(400)
         }
         
