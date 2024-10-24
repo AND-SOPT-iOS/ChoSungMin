@@ -7,17 +7,7 @@
 
 import UIKit
 
-enum Score: Int, CaseIterable {
-    
-    case five = 5
-    case four = 4
-    case three = 3
-    case two = 2
-    case one = 1
-    
-}
-
-final class ReviewDistributionBar: UIView {
+final class ReviewDistributionBar: BaseView {
     
     private let starImageStackView: UIStackView = {
         let stackView = UIStackView()
@@ -71,19 +61,13 @@ final class ReviewDistributionBar: UIView {
         }
     }
     
-}
-
-extension ReviewDistributionBar: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [starImageStackView, barBackgroundView, barView].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         starImageStackView.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
         }
