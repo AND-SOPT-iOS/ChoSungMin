@@ -58,7 +58,7 @@ final class ReviewDistributionBar: UIView {
             let imageView = UIImageView(image: .init(systemName: "star.fill"))
             imageView.tintColor = .secondaryLabel
             imageView.snp.makeConstraints {
-                $0.width.height.equalTo(12)
+                $0.width.height.equalTo(10)
             }
             starImageStackView.addArrangedSubview(imageView)
             if i < 5 - score.rawValue {

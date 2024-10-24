@@ -45,7 +45,7 @@ final class EvaluationWithReview: UIView {
     private let reviewDistributionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 4
         
         return stackView
     }()
@@ -134,7 +134,7 @@ extension EvaluationWithReview: Presentable {
         
         evaluationCountLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview()
-            $0.top.equalTo(reviewDistributionStackView.snp.bottom).offset(8)
+            $0.centerY.equalTo(scoreSubLabel)
         }
     }
     
