@@ -81,7 +81,13 @@ final class NewsView: BaseView {
     }
     
     override func setUI() {
-        [titleLabel, versionLabel, navigationButton, dateLabel, newsLabel].forEach {
+        [
+            titleLabel,
+            versionLabel,
+            navigationButton,
+            dateLabel,
+            newsLabel
+        ].forEach {
             addSubview($0)
         }
     }

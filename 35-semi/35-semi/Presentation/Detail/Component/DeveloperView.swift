@@ -64,7 +64,11 @@ final class DeveloperView: BaseView {
     }
     
     override func setUI() {
-        [developerNameLabel, developerLabel, chevronIndicatorImageView].forEach {
+        [
+            developerNameLabel,
+            developerLabel,
+            chevronIndicatorImageView
+        ].forEach {
             addSubview($0)
         }
     }

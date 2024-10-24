@@ -52,7 +52,11 @@ final class AgeLimitSummaryCell: BaseView {
     }
     
     override func setUI() {
-        [titleLabel, ageLimitLabel, generationLabel].forEach {
+        [
+            titleLabel,
+            ageLimitLabel,
+            generationLabel
+        ].forEach {
             addSubview($0)
         }
     }

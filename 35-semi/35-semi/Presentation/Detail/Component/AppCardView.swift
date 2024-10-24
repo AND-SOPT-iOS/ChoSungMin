@@ -77,7 +77,13 @@ final class AppCardView: BaseView {
     }
     
     override func setUI() {
-        [imageView, titleLabel, subtitleLabel, openButton, shareButton].forEach {
+        [
+            imageView,
+            titleLabel,
+            subtitleLabel,
+            openButton,
+            shareButton
+        ].forEach {
             self.addSubview($0)
         }
     }

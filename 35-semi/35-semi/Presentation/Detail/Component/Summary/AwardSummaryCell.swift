@@ -54,7 +54,11 @@ final class AwardSummaryCell: BaseView {
     }
     
     override func setUI() {
-        [titleLabel, awardImageView, typeLabel].forEach {
+        [
+            titleLabel,
+            awardImageView,
+            typeLabel
+        ].forEach {
             addSubview($0)
         }
     }

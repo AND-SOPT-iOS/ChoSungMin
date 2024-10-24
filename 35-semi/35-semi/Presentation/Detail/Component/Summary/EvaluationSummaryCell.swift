@@ -78,7 +78,11 @@ final class EvaluationSummaryCell: BaseView {
     }
     
     override func setUI() {
-        [countLabel, scorelabel, starStackView].forEach {
+        [
+            countLabel,
+            scorelabel,
+            starStackView
+        ].forEach {
             addSubview($0)
         }
     }

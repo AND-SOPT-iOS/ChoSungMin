@@ -9,7 +9,12 @@ import UIKit
 
 final class ExplanationView: BaseView {
     
-    private lazy var tapGestrue = UITapGestureRecognizer(target: self, action: #selector(explanationLabelTapped))
+    private lazy var tapGestrue = UITapGestureRecognizer(
+        target: self,
+        action: #selector(
+            explanationLabelTapped
+        )
+    )
     
     private lazy var explanationLabel: UILabel = {
         let label = UILabel()
@@ -92,7 +97,11 @@ final class ExplanationView: BaseView {
     }
     
     override func setUI() {
-        [explanationLabel, moreLabel, moreLabelLeftView].forEach {
+        [
+            explanationLabel,
+            moreLabel,
+            moreLabelLeftView
+        ].forEach {
             addSubview($0)
         }
     }

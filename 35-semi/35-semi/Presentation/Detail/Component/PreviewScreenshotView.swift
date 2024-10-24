@@ -59,8 +59,15 @@ final class PreviewScreenshotView: BaseView {
     }
     
     override func setUI() {
-        [titleLabel, imageView, deviceIcon, deviceLabel].forEach {
-            addSubview($0)
+        [
+            titleLabel,
+            imageView,
+            deviceIcon,
+            deviceLabel
+        ].forEach {
+            addSubview(
+                $0
+            )
         }
     }
     

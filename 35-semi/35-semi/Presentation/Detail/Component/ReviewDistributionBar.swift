@@ -62,7 +62,11 @@ final class ReviewDistributionBar: BaseView {
     }
     
     override func setUI() {
-        [starImageStackView, barBackgroundView, barView].forEach {
+        [
+            starImageStackView,
+            barBackgroundView,
+            barView
+        ].forEach {
             addSubview($0)
         }
     }
