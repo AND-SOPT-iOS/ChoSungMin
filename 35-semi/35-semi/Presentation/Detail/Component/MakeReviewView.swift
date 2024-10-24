@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MakeReviewView: UIView {
+final class MakeReviewView: BaseView {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -112,15 +112,7 @@ final class MakeReviewView: UIView {
         }
     }
     
-}
-
-extension MakeReviewView: Presentable {
-    
-    func setStyle() {
-        
-    }
-    
-    func setUI() {
+    override func setUI() {
         starButtonList.forEach {
             starStackView.addArrangedSubview($0)
         }
@@ -136,7 +128,7 @@ extension MakeReviewView: Presentable {
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         starStackView.snp.makeConstraints {
             $0.top.trailing.equalToSuperview()
         }
@@ -161,6 +153,7 @@ extension MakeReviewView: Presentable {
             $0.trailing.equalToSuperview()
         }
     }
+    
 }
 
 #Preview
@@ -171,12 +164,6 @@ extension MakeReviewView: Presentable {
             writeDate: Date(),
             title: "폰트 크기 복구해주세요.....",
             score: Score.four,
-//            content: """
-//            오늘 토스가 어쩌구 저쩌구 오늘 토스가
-//            어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구
-//            저쩌구 오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구
-//            오늘 토스가 어쩌구 저쩌구 오늘 토스가 어쩌구 저쩌구 오늘
-//            """,
             content: "ABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABC",
             developerAnswer: "그랬구나~",
             devleoperAnswerDate: Date()

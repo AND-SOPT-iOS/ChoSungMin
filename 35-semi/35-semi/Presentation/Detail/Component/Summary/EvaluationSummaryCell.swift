@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EvaluationSummaryCell: UIView {
+final class EvaluationSummaryCell: BaseView {
     
     private let countLabel: UILabel = {
         let label = UILabel()
@@ -77,19 +77,13 @@ final class EvaluationSummaryCell: UIView {
         }
     }
     
-}
-
-extension EvaluationSummaryCell: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [countLabel, scorelabel, starStackView].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         countLabel.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)

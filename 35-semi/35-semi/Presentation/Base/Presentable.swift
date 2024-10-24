@@ -12,4 +12,5 @@ protocol Presentable {
     func setUI()
     
     func setLayout()
+    
 }

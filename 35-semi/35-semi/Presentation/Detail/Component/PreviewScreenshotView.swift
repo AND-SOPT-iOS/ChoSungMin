@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PreviewScreenshotView: UIView {
+final class PreviewScreenshotView: BaseView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -58,20 +58,13 @@ final class PreviewScreenshotView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-extension PreviewScreenshotView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [titleLabel, imageView, deviceIcon, deviceLabel].forEach {
             addSubview($0)
         }
     }
     
-    // TODO: imageView 오토레이아웃 수정 (Hierarchy 확인)
-    func setLayout() {
+    override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }

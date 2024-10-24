@@ -99,7 +99,7 @@ final class DetailViewController: BaseViewController {
     // 만약 서버가 있으면 id만 받아와서 API 호출해서 데이터 바인딩하여 View에 프로퍼티를 놓을 필요 없음.
     private let detail: AppDetail
     
-    // TODO: News ViewController를 주입 받아야 할지 결정
+    // TODO: ViewController 주입
     init(detail: AppDetail) {
         self.detail = detail
         super.init(nibName: nil, bundle: nil)
@@ -138,7 +138,8 @@ final class DetailViewController: BaseViewController {
         ].forEach {
             scrollViewContentView.addSubview($0)
         }
-        if let makeReviewView = makeReviewView {            scrollViewContentView.addSubview(makeReviewView)
+        if let makeReviewView = makeReviewView {
+            scrollViewContentView.addSubview(makeReviewView)
         }
         [
             evaluationSummaryCell,
@@ -306,8 +307,6 @@ extension DetailViewController: EvaluationWithReviewViewDelegate {
                     content: """
                     동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세
                     """
-//                    developerAnswer: "그렇다그렇다",
-//                    devleoperAnswerDate: Date()
                 )
             ],
             reviewDistribution: ReviewDistribution(

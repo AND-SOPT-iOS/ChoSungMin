@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NewsView: UIView {
+final class NewsView: BaseView {
 
     weak var delegate: NewsDelegate?
     
@@ -80,19 +80,13 @@ final class NewsView: UIView {
         dateLabel.text = updateDate.convertFromNow()
     }
     
-}
-
-extension NewsView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [titleLabel, versionLabel, navigationButton, dateLabel, newsLabel].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
         }

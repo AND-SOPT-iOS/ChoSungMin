@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AgeLimitSummaryCell: UIView {
+final class AgeLimitSummaryCell: BaseView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -51,19 +51,13 @@ final class AgeLimitSummaryCell: UIView {
         ageLimitLabel.text = "\(ageLimit)+"
     }
     
-}
-
-extension AgeLimitSummaryCell: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [titleLabel, ageLimitLabel, generationLabel].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)

@@ -10,10 +10,10 @@ import SnapKit
 
 class BaseViewController: UIViewController, Presentable {
     
-    func setStyle() {}
+    func setStyle() { }
     
-    func setUI() {}
+    func setUI() { }
     
-    func setLayout() {}
+    func setLayout() { }
     
 }

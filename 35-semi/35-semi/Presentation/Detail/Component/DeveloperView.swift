@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DeveloperView: UIView {
+final class DeveloperView: BaseView {
     
     weak var delegate: DeveloperDelegate?
     
@@ -63,19 +63,13 @@ final class DeveloperView: UIView {
         delegate?.developerTapped()
     }
     
-}
-
-extension DeveloperView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [developerNameLabel, developerLabel, chevronIndicatorImageView].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         developerNameLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.bottom.equalTo(snp.centerY)
@@ -90,10 +84,13 @@ extension DeveloperView: Presentable {
             $0.centerY.trailing.equalToSuperview()
         }
     }
+    
 }
 
 protocol DeveloperDelegate: AnyObject {
+    
     func developerTapped()
+    
 }
 
 #Preview

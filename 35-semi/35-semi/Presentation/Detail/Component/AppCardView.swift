@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppCardView: UIView {
+final class AppCardView: BaseView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -76,19 +76,13 @@ final class AppCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-extension AppCardView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [imageView, titleLabel, subtitleLabel, openButton, shareButton].forEach {
             self.addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         imageView.snp.makeConstraints {
             $0.top.leading.bottom.equalToSuperview()
             $0.width.equalTo(imageView.snp.height)

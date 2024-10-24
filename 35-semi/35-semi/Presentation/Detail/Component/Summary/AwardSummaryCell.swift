@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AwardSummaryCell: UIView {
+final class AwardSummaryCell: BaseView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -17,7 +17,7 @@ class AwardSummaryCell: UIView {
         return label
     }()
     
-    private var awardImageView: UIImageView = {
+    private let awardImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = .secondaryLabel
         
@@ -53,19 +53,13 @@ class AwardSummaryCell: UIView {
         }
     }
     
-}
-
-extension AwardSummaryCell: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [titleLabel, awardImageView, typeLabel].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.centerX.equalTo(snp.centerX)
             $0.top.equalTo(snp.top)

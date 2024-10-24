@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ExplanationView: UIView {
+final class ExplanationView: BaseView {
     
     private lazy var tapGestrue = UITapGestureRecognizer(target: self, action: #selector(explanationLabelTapped))
     
@@ -91,19 +91,13 @@ final class ExplanationView: UIView {
         }
     }
     
-}
-
-extension ExplanationView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [explanationLabel, moreLabel, moreLabelLeftView].forEach {
             addSubview($0)
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         explanationLabel.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ReviewView: UIView {
+final class ReviewView: BaseView {
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -223,16 +223,12 @@ final class ReviewView: UIView {
         answerMoreLabelLeftView.removeFromSuperview()
     }
 
-}
-
-extension ReviewView: Presentable {
-    
-    func setStyle() {
+    override func setStyle() {
         layer.cornerRadius = 10
         backgroundColor = .systemGray6
     }
     
-    func setUI() {
+    override func setUI() {
         [
             titleLabel,
             starStackView,
@@ -273,7 +269,7 @@ extension ReviewView: Presentable {
         addSubview(stackView)
     }
     
-    func setLayout() {
+    override func setLayout() {
         stackView.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }

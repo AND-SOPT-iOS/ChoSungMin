@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EvaluationWithReviewView: UIView {
+final class EvaluationWithReviewView: BaseView {
     
     weak var delegate: EvaluationWithReviewViewDelegate?
     
@@ -94,13 +94,7 @@ final class EvaluationWithReviewView: UIView {
         delegate?.showAllButtonTapped()
     }
     
-}
-
-extension EvaluationWithReviewView: Presentable {
-    
-    func setStyle() { }
-    
-    func setUI() {
+    override func setUI() {
         [
             titleLabel,
             showAllButton,
@@ -113,7 +107,7 @@ extension EvaluationWithReviewView: Presentable {
         }
     }
     
-    func setLayout() {
+    override func setLayout() {
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }
