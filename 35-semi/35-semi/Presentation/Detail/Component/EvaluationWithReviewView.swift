@@ -9,6 +9,8 @@ import UIKit
 
 final class EvaluationWithReviewView: UIView {
     
+    weak var delegate: EvaluationWithReviewViewDelegate?
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "평가 및 리뷰"
@@ -17,11 +19,12 @@ final class EvaluationWithReviewView: UIView {
         return label
     }()
     
-    private let showAllButton: UIButton = {
+    private lazy var showAllButton: UIButton = {
         let button = UIButton()
         button.setTitle("모두 보기", for: .normal)
         button.setTitleColor(.tintColor, for: .normal)
         button.contentVerticalAlignment = .bottom
+        button.addTarget(self, action: #selector(showAllButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -87,6 +90,10 @@ final class EvaluationWithReviewView: UIView {
         evaluationCountLabel.text = "\(reviewDistribution.translatedTotalCountString)개의 리뷰"
     }
     
+    @objc func showAllButtonTapped() {
+        delegate?.showAllButtonTapped()
+    }
+    
 }
 
 extension EvaluationWithReviewView: Presentable {
@@ -137,6 +144,12 @@ extension EvaluationWithReviewView: Presentable {
             $0.centerY.equalTo(scoreSubLabel)
         }
     }
+    
+}
+
+protocol EvaluationWithReviewViewDelegate: AnyObject {
+    
+    func showAllButtonTapped()
     
 }
 

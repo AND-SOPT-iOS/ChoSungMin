@@ -9,7 +9,6 @@ import UIKit
 
 final class DetailViewController: BaseViewController {
     
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         
@@ -84,6 +83,7 @@ final class DetailViewController: BaseViewController {
     
     private lazy var evaluationWithReview: EvaluationWithReviewView = {
         let evaluationWithReview = EvaluationWithReviewView(reviewDistribution: detail.reviewDistribution)
+        evaluationWithReview.delegate = self
         
         return evaluationWithReview
     }()
@@ -248,6 +248,17 @@ extension DetailViewController: DeveloperDelegate {
     func developerTapped() {
         navigationController?.pushViewController(
             DeveloperViewController(),
+            animated: true
+        )
+    }
+    
+}
+
+extension DetailViewController: EvaluationWithReviewViewDelegate {
+    
+    func showAllButtonTapped() {
+        navigationController?.pushViewController(
+            AllReviewViewController(),
             animated: true
         )
     }
