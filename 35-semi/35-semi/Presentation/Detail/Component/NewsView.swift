@@ -1,5 +1,5 @@
 //
-//  News.swift
+//  NewsView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/17/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class News: UIView {
+final class NewsView: UIView {
 
     weak var delegate: NewsDelegate?
     
@@ -82,7 +82,7 @@ final class News: UIView {
     
 }
 
-extension News: Presentable {
+extension NewsView: Presentable {
     
     func setStyle() { }
     
@@ -128,7 +128,7 @@ protocol NewsDelegate: AnyObject {
 
 #Preview
 {
-    News(
+    NewsView(
         version: "5.183.0",
         news: "- 구석구석 숨어있던 버그들을 잡았어요. 또 다른 버그가 나타나면 토스 고객센터를 찾아주세요. 늘 열려있답니다. 365일 24시간 언제든지요.",
         updateDate: Date(

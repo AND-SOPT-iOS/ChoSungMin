@@ -1,5 +1,5 @@
 //
-//  Developer.swift
+//  DeveloperView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/19/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class Developer: UIView {
+final class DeveloperView: UIView {
     
     weak var delegate: DeveloperDelegate?
     
@@ -65,7 +65,7 @@ final class Developer: UIView {
     
 }
 
-extension Developer: Presentable {
+extension DeveloperView: Presentable {
     
     func setStyle() { }
     
@@ -98,5 +98,5 @@ protocol DeveloperDelegate: AnyObject {
 
 #Preview
 {
-    Developer(developerName: "Viva Republica")
+    DeveloperView(developerName: "Viva Republica")
 }

@@ -1,5 +1,5 @@
 //
-//  Explanation.swift
+//  ExplanationView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/18/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class Explanation: UIView {
+final class ExplanationView: UIView {
     
     private lazy var tapGestrue = UITapGestureRecognizer(target: self, action: #selector(explanationLabelTapped))
     
@@ -92,7 +92,7 @@ final class Explanation: UIView {
     
 }
 
-extension Explanation: Presentable {
+extension ExplanationView: Presentable {
     
     func setStyle() { }
     
@@ -123,7 +123,7 @@ extension Explanation: Presentable {
 
 #Preview
 {
-    Explanation(explanation: """
+    ExplanationView(explanation: """
 토스뱅크, 토스증권 서비스를 이용하시려면 토스 앱 설치가 필요합니다.• 모든 계좌의 모든 정보를 한 곳에서, 따로 보았던 예적금, 청약, 증권, 대출 계좌의 정보를 한 곳에서 확인할 수 있어요.• 
 
 얼마나 벌고 얼마나 썼을까? 한 달 동안의 수입과 소비를 시간 순으로 모아볼 수 있고, 소비 분석 리포트도 제공해드려요.

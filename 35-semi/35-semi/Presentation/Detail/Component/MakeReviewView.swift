@@ -1,5 +1,5 @@
 //
-//  MakeReview.swift
+//  MakeReviewView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/23/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MakeReview: UIView {
+final class MakeReviewView: UIView {
     
     private let headerLabel: UILabel = {
         let label = UILabel()
@@ -114,7 +114,7 @@ final class MakeReview: UIView {
     
 }
 
-extension MakeReview: Presentable {
+extension MakeReviewView: Presentable {
     
     func setStyle() {
         
@@ -165,7 +165,7 @@ extension MakeReview: Presentable {
 
 #Preview
 {
-    MakeReview(
+    MakeReviewView(
         bestReview: Review(
             writer: "조성민",
             writeDate: Date(),

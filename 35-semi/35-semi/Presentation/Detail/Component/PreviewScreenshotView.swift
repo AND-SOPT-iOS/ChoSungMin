@@ -1,5 +1,5 @@
 //
-//  PreviewScreenshot.swift
+//  PreviewScreenshotView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/17/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PreviewScreenshot: UIView {
+final class PreviewScreenshotView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -60,7 +60,7 @@ final class PreviewScreenshot: UIView {
     
 }
 
-extension PreviewScreenshot: Presentable {
+extension PreviewScreenshotView: Presentable {
     
     func setStyle() { }
     
@@ -98,5 +98,5 @@ extension PreviewScreenshot: Presentable {
 
 #Preview
 {
-    PreviewScreenshot()
+    PreviewScreenshotView()
 }

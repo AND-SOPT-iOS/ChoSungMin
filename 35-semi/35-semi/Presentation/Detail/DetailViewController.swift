@@ -22,9 +22,9 @@ final class DetailViewController: BaseViewController {
         return scrollViewContentView
     }()
     
-    private lazy var appCard: AppCard = {
+    private lazy var appCard: AppCardView = {
         //TODO: 기본 이미지 추가하기
-        let appCard = AppCard(image: UIImage(named: "\(self.detail.imageName)") ?? UIImage.toss, title: self.detail.title, subtitle: self.detail.subtitle)
+        let appCard = AppCardView(image: UIImage(named: "\(self.detail.imageName)") ?? UIImage.toss, title: self.detail.title, subtitle: self.detail.subtitle)
         
         return appCard
     }()
@@ -56,41 +56,41 @@ final class DetailViewController: BaseViewController {
         return agelimitSummaryCell
     }()
     
-    private lazy var news: News = {
-        let news = News(version: detail.version, news: detail.news, updateDate: detail.updateDate)
+    private lazy var news: NewsView = {
+        let news = NewsView(version: detail.version, news: detail.news, updateDate: detail.updateDate)
         news.delegate = self
         
         return news
     }()
     
-    private let previewScreenshot: PreviewScreenshot = {
-        let previewScreenshot = PreviewScreenshot()
+    private let previewScreenshot: PreviewScreenshotView = {
+        let previewScreenshot = PreviewScreenshotView()
         
         return previewScreenshot
     }()
     
-    private lazy var explanation: Explanation = {
-        let explanation = Explanation(explanation: detail.explanation)
+    private lazy var explanation: ExplanationView = {
+        let explanation = ExplanationView(explanation: detail.explanation)
         
         return explanation
     }()
     
-    private lazy var developer: Developer = {
-        let developer = Developer(developerName: detail.developer)
+    private lazy var developer: DeveloperView = {
+        let developer = DeveloperView(developerName: detail.developer)
         developer.delegate = self
         
         return developer
     }()
     
-    private lazy var evaluationWithReview: EvaluationWithReview = {
-        let evaluationWithReview = EvaluationWithReview(reviewDistribution: detail.reviewDistribution)
+    private lazy var evaluationWithReview: EvaluationWithReviewView = {
+        let evaluationWithReview = EvaluationWithReviewView(reviewDistribution: detail.reviewDistribution)
         
         return evaluationWithReview
     }()
     
-    private lazy var makeReviewView: MakeReview? = {
+    private lazy var makeReviewView: MakeReviewView? = {
         if let bestReview = detail.bestReviews.first {
-            return MakeReview(bestReview: bestReview)
+            return MakeReviewView(bestReview: bestReview)
         } else {
             return nil
         }

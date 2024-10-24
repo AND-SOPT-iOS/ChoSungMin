@@ -1,5 +1,5 @@
 //
-//  AppCard.swift
+//  AppCardView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/15/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppCard: UIView {
+final class AppCardView: UIView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -78,7 +78,7 @@ final class AppCard: UIView {
     
 }
 
-extension AppCard: Presentable {
+extension AppCardView: Presentable {
     
     func setStyle() { }
     
@@ -122,5 +122,5 @@ extension AppCard: Presentable {
 
 #Preview
 {
-    AppCard(image: .toss, title: "토스", subtitle: "금융이 쉬워진다")
+    AppCardView(image: .toss, title: "토스", subtitle: "금융이 쉬워진다")
 }

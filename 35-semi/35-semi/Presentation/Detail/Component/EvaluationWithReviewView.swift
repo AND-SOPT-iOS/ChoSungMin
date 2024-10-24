@@ -1,5 +1,5 @@
 //
-//  EvaluationWithReview.swift
+//  EvaluationWithReviewView.swift
 //  35-semi
 //
 //  Created by 조성민 on 10/19/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class EvaluationWithReview: UIView {
+final class EvaluationWithReviewView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -89,7 +89,7 @@ final class EvaluationWithReview: UIView {
     
 }
 
-extension EvaluationWithReview: Presentable {
+extension EvaluationWithReviewView: Presentable {
     
     func setStyle() { }
     
@@ -142,7 +142,7 @@ extension EvaluationWithReview: Presentable {
 
 #Preview
 {
-    EvaluationWithReview(
+    EvaluationWithReviewView(
         reviewDistribution: ReviewDistribution(
             five: 58800,
             four: 10920,
